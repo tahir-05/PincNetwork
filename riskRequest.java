@@ -2,13 +2,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.support.ui.Select;
-//import org.openqa.selenium.support.ui.Select;
-//import org.openqa.selenium.support.ui.Select;
 public class riskRequest{
     public static void main(String[] args) throws InterruptedException {
         // Set the path to the ChromeDriver executable
-        System.setProperty("webdriver.chrome.driver", "C:\\SeleniumTest\\CrmTest\\src\\drivers\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\pinc\\PincNetwork\\src\\drivers\\chromedriver.exe");
 
         // Initialize ChromeDriver
         WebDriver driver = new ChromeDriver();
@@ -43,11 +40,18 @@ public class riskRequest{
         WebElement raiseNewRequestButton =driver.findElement(By.cssSelector("ul.nav.nav-pills.float-right > li.nav-item > button.btn.btn-primary.btn-md.px-1.font-small-3.shadow.round"));
         raiseNewRequestButton.click();
 
-        WebElement clientType =driver.findElement(By.cssSelector("span.e-input-group-icon.e-ddl-icon.e-search-icon"));
-         clientType.click();
-         //WebElement typeselect = driver.findElement(By.cssSelector(".col-12.col-md-6 > .form-group:nth-child(1) > .e-input-group > input#client_type"));
-        //typeselect.sendKeys("Client");
-        
+        WebElement clientType = driver.findElement(By.cssSelector("span.e-input-group-icon.e-ddl-icon.e-search-icon"));
+        clientType.click();
+        Thread.sleep(1000);
+
+        WebElement clienttypeselect = driver.findElement(By.cssSelector(".col-12.col-md-6.col-lg-6 .e-input-group"));
+        clienttypeselect.sendKeys("Existing Client"); 
+        Thread.sleep(2000);
+
+        WebElement clientNameselect = driver.findElement(By.cssSelector(".col-12.col-md-6.col-lg-6:nth-child(2) .e-input-group"));
+        clientNameselect.sendKeys("1 DELL");
+        Thread.sleep(2000);
+
         WebElement location = driver.findElement(By.id("address"));
         location.sendKeys("mumbai thane");
 
@@ -56,37 +60,27 @@ public class riskRequest{
 
         WebElement sumInsured = driver.findElement(By.id("sum_insured"));
         sumInsured.sendKeys("01");
+        Thread.sleep(2000);
 
-       // WebElement typeOfInpection =driver.findElement(By.cssSelector("span.e-input-group-icon.e-ddl-icon.e-search-icon\")"));
-        //typeOfInpection.click();
+        WebElement typeofInspection = driver.findElement(By.cssSelector(".col-12.col-md-6.col-lg-6:nth-child(6) .e-input-group"));
+        typeofInspection.sendKeys("Risk Inspection");
+        Thread.sleep(2000);
+        typeofInspection.click();
 
-        WebElement date = driver.findElement(By.id("inspection_date"));
-        date.sendKeys("2024-05-23");
-        
+        WebElement Date = driver.findElement(By.className("dx-dropdowneditor-icon"));
+        Date.click();
 
+        WebElement selectedCalCell = driver.findElement(By.cssSelector("td.dx-calendar-today"));
+        selectedCalCell.click(); 
 
-        
+       //WebElement remarksField = driver.findElement(By.id("remarks"));
+       //remarksField.sendKeys("This is a test remark.");
 
+       WebElement submitButton = driver.findElement(By.id("save_risk_management"));
+       submitButton.click();
 
-
-       
-
-
-
-
-
-
-
-        
-
-       
-
-       
-
-
-
-
-
-    }
+  
+    } 
 
 }
+        
